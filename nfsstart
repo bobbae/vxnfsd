@@ -1,0 +1,33 @@
+ramdev = ramDevCreate(0,512,400,400,0)
+rt11FsDateSet(93, 6, 20)
+rt11vol = rt11FsMkfs("/rt11/",ramdev)
+devs
+lsOld "/rt11/"
+rt11fd = open("/rt11/junk.txt", 0x202, 0666)
+jj=malloc(1024)
+memset(jj, 'k', 1023)
+write(rt11fd, jj, 1023)
+close(rt11fd)
+kk=malloc(1024)
+rt11fd = open("/rt11/junk.txt", 0x1, 0666)
+read(rt11fd, kk, 1023)
+close(rt11fd);
+d kk
+ramdev2 = ramDevCreate(0,512,400,400,0)
+msdosvol = dosFsMkfs("/msdos/", ramdev2)
+msdosfd = open("/msdos/junk.txt", 0x202, 0666)
+memset(jj, 'm', 1023)
+write(msdosfd, jj, 1023)
+close(msdosfd)
+msdosfd = open("/msdos/junk.txt", 0x202, 0666)
+read(msdosfd, kk, 1023)
+close(msdosfd);
+d kk
+msdosfd = open("/msdos/inode.inf", 0x202, 0666)
+write(msdosfd, "/msdos/ 1\n", strlen("/msdos/ 1\n"));
+write(msdosfd, "/msdos/junk.txt 2\n", strlen("/msdos/junk.txt 2\n"));
+write(msdosfd, "/msdos/inode.inf 3\n", strlen("/msdos/inode.inf 3\n"));
+close(msdosfd);
+ld < /usr/vw/hack/nfsd/nfsserver.o
+nfs_start("/msdos/inode.inf")
+
